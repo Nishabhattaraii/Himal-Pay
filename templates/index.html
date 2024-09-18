@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    {% block extra_css %}{% endblock %}
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <a href="{% url 'home' %}" class="logo">Himal Pay</a>
+        </div>
+        <div class="header-right">
+            <span class="greeting">Hi, {{ user.username }}</span>
+        </div>
+    </header>
+
+    <div class="content">
+        {% block content %}
+    
+        {% endblock %}
+    </div>
+</body>
+</html>

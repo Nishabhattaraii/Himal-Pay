@@ -1,0 +1,38 @@
+{% load static%} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Responses</title>
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="{% static 'webhook_response.css' %}">
+</head>
+<body>
+    <h2>Webhook Responses for Submission ID: {{ request.GET.submission_id }}</h2>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Event Code</th>
+                <th>Event Name</th>
+                <th>Timestamp</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for response in webhook_responses %}
+            <tr>
+                <td>{{ response.event_code }}</td>
+                <td>{{ response.event_name }}</td>
+                <td>{{ response.time_stamp }}</td>
+                <td>{{ response.data }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'webhook' %}">Back to Submission IDs</a>
+</body>
+</html>

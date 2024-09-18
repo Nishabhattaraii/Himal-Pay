@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+    <h2>Submission IDs</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Submission ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission_id in submission_ids %}
+            <tr>
+                <td><a href="{% url 'webhook' %}?submission_id={{ submission_id }}">{{ submission_id }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'submission_ids.css' %}">
+{% endblock %}
